@@ -16,10 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Font awesone -->
-    <script>
-        src = "https://kit.fontawesome.com/c7ed230053.js"
-        crossorigin = "anonymous"
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous">
 
     @yield('cdns')
 
@@ -31,7 +30,7 @@
     <div id="app">
 
         @include('includes.layout.navbar')
-        <main class="cointainer mt-3">
+        <main class="container mt-3">
             @yield('content')
         </main>
     </div>

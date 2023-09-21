@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('title', 'Post')
+@section('title', 'Posts')
 
 @section('content')
     <header>
@@ -26,17 +26,22 @@
                         <td>{{ $post->create_at }}</td>
                         <td>{{ $post->updated_at }}</td>
                         <td class="d-flex justify-content-end">
-                            <a href="{{ route('adimin.posts.show', $post) }}" class="btn btn-sm btn-primary"><i
-                                    class="fas fa-eye"></i>
-                                <a href="{{ route('adimin.posts.edit', $post) }}" class="btn btn-sm btn-warnings"><i
-                                        class="fas fa-eye"></i>
-                                    <form action="{{ route('adimin.posts.destroy', $post) }}" method="POST" class="ms-2">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-damger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                            <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-sm btn-primary ms-2"><i
+                                    class="fas fa-eye"></i></a>
+
+
+                            <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-warning ms-2"><i
+                                    class="fas fa-pencil"></i></a>
+
+
+                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST" class="ms-2">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+
+
+
+                            </form>
                         </td>
                     </tr>
                 @empty
@@ -44,11 +49,10 @@
                         <td class="text-center" colspan="6"></td>
                         <h3>Non ci sono post</h3>
                     </tr>
-                @endempty
-            @endforelse
-            </tr>
-        </tbody>
-    </table>
-</header>
+                @endforelse
+
+            </tbody>
+        </table>
+    </header>
 
 @endsection
