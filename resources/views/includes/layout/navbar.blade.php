@@ -27,7 +27,7 @@
                 @auth
                     <li class="nav-item">
                         <a class="nav-link @if (request()->routeIs('admin.post*'))  @endif active"
-                            href="{{ route('admin.posts.index') }}">Post</a>
+                            href="{{ route('admin.posts.index') }}">Posts</a>
                     </li>
                 @endauth
             </ul>
