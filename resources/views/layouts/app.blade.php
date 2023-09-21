@@ -15,6 +15,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Font awesone -->
+    <script>
+        src = "https://kit.fontawesome.com/c7ed230053.js"
+        crossorigin = "anonymous"
+    </script>
+
     @yield('cdns')
 
     <!-- Usando Vite -->
@@ -24,7 +30,7 @@
 <body>
     <div id="app">
 
-        @include('includes.layouts.navbar')
+        @include('includes.layout.navbar')
         <main class="cointainer mt-3">
             @yield('content')
         </main>

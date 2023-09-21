@@ -13,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+
+        return view('admin.posts.home', compact('posts'));
     }
 
     /**
