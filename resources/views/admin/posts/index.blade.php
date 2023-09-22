@@ -38,7 +38,7 @@
                             <form action="{{ route('admin.posts.destroy', $post) }}" method="POST" class="ms-2">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-sm btn-danger delete-form"><i class="fas fa-trash"></i></button>
                             </form>
 
                         </div>
@@ -50,6 +50,10 @@
                     <h3>Non ci sono post</h3>
                 </tr>
             @endforelse
+
+            @section('scripts')
+                @vite('resources/js/delete-confirmation.js')
+            @endsection
 
         </tbody>
     </table>

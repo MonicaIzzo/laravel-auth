@@ -22,11 +22,15 @@
         <div class="d-flex justify-content-end">
             <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-warning ms-2"><i class="fas fa-pencil"></i>
                 Modifica</a>
-            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST" class="ms-2">
+            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST" class="ms-2 delete-form">
                 @method('DELETE')
                 @csrf
                 <button class="btn  btn-danger"><i class="fas fa-trash"></i> Elimina</button>
             </form>
         </div>
     </footer>
+@endsection
+
+@section('scripts')
+    @vite('resources/js/delete-confirmation.js')
 @endsection
