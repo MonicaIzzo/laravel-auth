@@ -63,6 +63,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return to_route('admin.post.index')->with('type', 'success')->whith('message', 'Post eliminato con successo');
     }
 }
