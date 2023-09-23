@@ -55,7 +55,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -63,7 +63,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($data['title'], '_');
+
+        $post->update($data);
+
+        return to_route('admin.postes.show', $post)->with('alert-type', 'success')->whith('alert-message', 'Post modificato con successo');
     }
 
     /**

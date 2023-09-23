@@ -27,8 +27,8 @@
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Copertina</label>
-                    <input type="url" class="form-control" id="image" name="image" value={{ old('image') }}
-                        placenolder="Inserisci un url valido">
+                    <input type="url" class="form-control" id="image" name="image" value="{{ old('image') }}"
+                        placeholder="Inserisci un url valido">
                 </div>
             </div>
             <div classe="col-1">
