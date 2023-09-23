@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -23,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -31,7 +32,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $post = new Post();
+        $post->slug = Str::slug($post->title, '_');
+
+        $post->fill($data);
+        $post->save();
+
+        return to_route('admin.postes.show', $post)->with('alert-type', 'success')->whith('alert-message', 'Post creato con successo');
     }
 
     /**
@@ -64,6 +72,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route('admin.post.index')->with('type', 'success')->whith('message', 'Post eliminato con successo');
+        return to_route('admin.post.index')->with('alert-type', 'success')->whith('alert-message', 'Post eliminato con successo');
     }
 }
