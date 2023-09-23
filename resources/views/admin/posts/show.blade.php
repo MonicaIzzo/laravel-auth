@@ -6,7 +6,9 @@
     <h1>{{ $post->title }}</h1>
     <hr>
     <div class="clearfix">
-        <img class="img-fluid float-start me-2" src="{{ $post->image }}" alt="{{ $post->title }}" width="250">
+        @if ($post->image)
+            <img class="img-fluid float-start me-2" src="{{ $post->image }}" alt="{{ $post->title }}" width="250">
+        @endif
         <p>{{ $post->content }}</p>
         <div>
             <strong>Creato il: </strong>{{ $post->created_at }}<br>

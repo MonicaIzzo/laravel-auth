@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create Post')
+@section('title', 'Edit Post')
 
 @section('content')
     <header class="d-flex justify-content-between align-items-center">

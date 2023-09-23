@@ -3,8 +3,11 @@
 @section('title', 'Create Post')
 
 @section('content')
-    <header>
-        <h1>Crea Post</h1>
+    <header class="d-flex justify-content-between align-items-center">
+        <h1>Crea un Post</h1>
+        <a class="btn btn-sm btn-secondary" href=" {{ route('admin.posts.index') }}"><i
+                class="fas fa-arrow-left me-2"></i>Torna indietro
+        </a>
     </header>
     <hr>
     <form method="POST" action=" {{ route('admin.posts.store') }}">
