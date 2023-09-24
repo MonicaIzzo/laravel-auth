@@ -11,7 +11,7 @@
     </header>
     <hr>
     <!-- FORM -->
-    <form method="POST" action=" {{ route('admin.posts.update', $post) }}">
+    <form method="POST" action=" {{ route('admin.posts.update', $post) }}" enctype="multipart/form-data" novalidate>
         @csrf
         @method('PUT')
         <div class="row">
@@ -31,8 +31,8 @@
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Copertina</label>
-                    <input type="url" class="form-control" id="image" name="image"
-                        value={{ old('image', $post->image) }} placenolder="Inserisci un url valido">
+                    <input type="File" class="form-control" id="image" name="image"
+                        placenolder="Inserisci un url valido">
                 </div>
             </div>
             <div classe="col-1">

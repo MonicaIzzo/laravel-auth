@@ -10,7 +10,7 @@
         </a>
     </header>
     <hr>
-    <form method="POST" action=" {{ route('admin.posts.store') }}">
+    <form method="POST" action=" {{ route('admin.posts.store') }}" enctype="multipart/form-data" novalidate>
         @csrf
         <!-- FORM -->
         <div class="row">
@@ -30,7 +30,7 @@
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Copertina</label>
-                    <input type="url" class="form-control" id="image" name="image" value="{{ old('image') }}"
+                    <input type="File" class="form-control" id="image" name="image"
                         placeholder="Inserisci un url valido">
                 </div>
             </div>
