@@ -6,7 +6,8 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
-use Illuminate\Support\Rule;
+use Illuminate\Validation\Rule;
+
 
 class PostController extends Controller
 {
@@ -38,14 +39,14 @@ class PostController extends Controller
             [
                 'title' => 'required|string|max:50|unique:posts',
                 'content' => 'required|string',
-                'image' => 'nullable|url'
+                'image' => 'nullable|image'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
                 'title.max' => 'Il titolo deve essere lungo massimo :max caratteri',
                 'title.unique' => "Esiste già un post dal titolo $request->title",
                 'content.reguired' => 'Non può esistere un post senza contenuto',
-                'image.url' => 'url inserito non è valido'
+                'image.image' => 'il file inserito non è valido'
             ]
         );
 
@@ -86,14 +87,14 @@ class PostController extends Controller
             [
                 'title' => ['required', 'string', 'max:50', Rule::unique('posts')->ignore($post->id)],
                 'content' => 'required|string',
-                'image' => 'nullable|url'
+                'image' => 'nullable|image'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
                 'title.max' => 'Il titolo deve essere lungo massimo :max caratteri',
                 'title.unique' => "Esiste già un post dal titolo $request->title",
                 'content.reguired' => 'Non può esistere un post senza contenuto',
-                'image.url' => 'url inserito non è valido'
+                'image.image' => 'url inserito non è valido'
             ]
         );
 
