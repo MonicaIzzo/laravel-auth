@@ -31,7 +31,7 @@
 
         @include('includes.layout.navbar')
 
-        @include('includes.layout.alert')
+
 
         <main class="container mt-3">
             @include('includes.layout.alert')

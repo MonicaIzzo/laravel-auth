@@ -36,13 +36,11 @@
                 </div>
             </div>
             <div classe="col-1">
-                <img src="{{ old('image', $post->image ?? 'https://marcolanci.it/utils/placeholder.jpg') }}" alt="preview"
-                    class="img-fluid" id="image-preview">
+                <img src="{{ $post->image ? $post->getImagePath() : 'https://marcolanci.it/utils/placeholder.jpg' }}"
+                    alt="preview" class="img-fluid" id="image-preview">
             </div>
         </div>
         <hr>
-
-
         <!-- BOTTONI -->
         <div class="d-flex justify-content-end mt-4">
             <button class="btn btn-success">

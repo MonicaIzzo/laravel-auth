@@ -31,12 +31,12 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Copertina</label>
                     <input type="File" class="form-control" id="image" name="image"
-                        placeholder="Inserisci un url valido">
+                        placeholder="Inserisci un immagine valida">
                 </div>
             </div>
             <div classe="col-1">
-                <img src="{{ old('image', 'https://marcolanci.it/utils/placeholder.jpg') }}" alt="preview"
-                    class="img-fluid" id="image-preview">
+                <img src="{{ $post->image ? $post->getImagePath() : 'https://marcolanci.it/utils/placeholder.jpg' }}"
+                    alt="preview" class="img-fluid" id="image-preview">
             </div>
         </div>
         <hr>
@@ -59,8 +59,30 @@
         const imageField = document.getElementById('image')
         const previewFilder = document.getElementById('image-preview')
 
-        imageField.addEventListener('input', () => {
-            previewFilder.src = imageField.value || placeholder;
+        let blobUrl = null;
+
+        imageField.addEventListener('change', () => {
+
+            // Controllo se ci sono file
+
+            if (imageField.files && imageField.files[0]) {
+
+
+                // Leggo il file
+                const file = imageField[0];
+
+                // Creo il blob del file
+                blobUrl = URL.createObjectURL(file);
+
+                previewFilder.src = blobUrl;
+            } else {
+
+                previewFilder.src = placeholder;
+            }
+        })
+
+        window.addEventListener('beforeunload', () => {
+            if (blobUrl) URL.revokeObjectURL(blobUrl);
         })
     </script>
 @endsection

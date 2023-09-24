@@ -4,7 +4,8 @@
     <div class="jumbotron rounded-3">
         @forelse ($posts as $post)
             <div class="card mb-3">
-                <img src="{{ $post->image }}" class="card-img-top" alt="{{ $post->title }}">
+                <img src="{{ $post->image ? asset('storage/' . $post->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
+                    class="card-img-top" alt="{{ $post->title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <h6 class="card-title">{{ $post->created_at }}</h6>
@@ -13,7 +14,6 @@
                 </div>
             </div>
     </div>
-
 @empty
     <h3 class="text-center">Non Ci sono post</h3>
     @endforelse

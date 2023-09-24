@@ -7,7 +7,7 @@
     <hr>
     <div class="clearfix">
         @if ($post->image)
-            <img class="img-fluid float-start me-2" src="{{ $post->image }}" alt="{{ $post->title }}" width="250">
+            <img class="img-fluid float-start me-2" src="{{ $post->getImagePath() }}" alt="{{ $post->title }}" width="250">
         @endif
         <p>{{ $post->content }}</p>
         <div>
