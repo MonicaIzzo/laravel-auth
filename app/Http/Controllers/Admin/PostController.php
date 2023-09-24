@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -54,6 +55,12 @@ class PostController extends Controller
 
         $data = $request->all();
         $post = new Post();
+
+        if (array_key_exists('image', $data)) {
+            $img_url = Storage::putFile('post_image', $data['image']);
+            $data['image'] = $img_url;
+        }
+
         $post->slug = Str::slug($post->title, '_');
 
         $post->fill($data);
@@ -105,9 +112,15 @@ class PostController extends Controller
 
         $data['slug'] = Str::slug($data['title'], '_');
 
+        if (array_key_exists('image', $data)) {
+            if ($post->imge) Storage::delete($post->image);
+            $img_url = Storage::putFile('post_image', $data['image']);
+            $data['image'] = $img_url;
+        }
+
         $post->update($data);
 
-        return to_route('admin.postes.show', $post)->with('alert-type', 'success')->whith('alert-message', 'Post modificato con successo');
+        return to_route('admin.posts.show', $post)->with('alert-type', 'success')->whith('alert-message', 'Post modificato con successo');
     }
 
     /**

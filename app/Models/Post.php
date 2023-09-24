@@ -12,4 +12,10 @@ class Post extends Model
     use SoftDeletes;
 
     protected $fillable = ['title', 'slug', 'image', 'content'];
+
+
+    public function getImagePath()
+    {
+        return asset('storage/' . $this->image);
+    }
 }
